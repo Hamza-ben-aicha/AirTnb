@@ -3,9 +3,22 @@
 {% block title %}New Listing{% endblock %}
 
 {% block body %}
-    <h1>Create new Listing</h1>
+{% include "base.html.twig" %}
+    <style>
+       form div{
+           margin-bottom:20px;
+       }
+       form div div input{
+           margin-left:50px;
+       }
+       #container{
+           background-color: powderblue;
+       }
+    </style>
 
+    <div id ="container" class ="container">
+    <h3>Create new Listing</h3>
     {{ include('listing/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('listing_index') }}">back to list</a>
 {% endblock %}

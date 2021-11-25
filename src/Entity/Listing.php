@@ -80,6 +80,9 @@ class Listing
         $this->picturesUlrs = new ArrayCollection();
         $this->recievedRatings = new ArrayCollection();
     }
+    public function __toString() {
+        return $this->id;
+    }
 
     public function getId(): ?int
     {
