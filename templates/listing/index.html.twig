@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listing index{% endblock %}
+
+{% block body %}
+{% include "base.html.twig" %}
+    <h1>Listing index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Beds</th>
+                <th>Guests</th>
+                <th>Location</th>
+                <th>AvailableFrom</th>
+                <th>AvailableUntil</th>
+                <th>Amenities</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for listing in listings %}
+            <tr>
+                <td>{{ listing.id }}</td>
+                <td>{{ listing.name }}</td>
+                <td>{{ listing.price }}</td>
+                <td>{{ listing.beds }}</td>
+                <td>{{ listing.guests }}</td>
+                <td>{{ listing.location }}</td>
+                <td>{{ listing.availableFrom ? listing.availableFrom|date('Y-m-d') : '' }}</td>
+                <td>{{ listing.availableUntil ? listing.availableUntil|date('Y-m-d') : '' }}</td>
+                <td>{{ listing.amenities ? listing.amenities|join(', ') : '' }}</td>
+                <td>
+                    <a href="{{ path('listing_show', {'id': listing.id}) }}">show</a>
+                    <a href="{{ path('listing_edit', {'id': listing.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('listing_new') }}">Create new</a>
+{% endblock %}
