@@ -52,7 +52,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ listing.name }}</h5>
-                    <p class="card-text">{{ listing.price }}</p>
+                    <p >available From : {{ listing.availableFrom ? listing.availableFrom|date('Y-m-d') : '' }}</p>
+                    <p>available Until : {{ listing.availableUntil ? listing.availableUntil|date('Y-m-d') : '' }}</p>
+                    <p class="card-text">price : {{ listing.price }} dt</p>
                     <a href="{{ path('listing_show', {'id': listing.id}) }}" class="btn btn-primary">detail</a>
                 </div>
             </div>
